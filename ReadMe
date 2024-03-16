@@ -1,0 +1,52 @@
+
+# Flask and MongoDB API Project Setup
+
+This README outlines the steps necessary to set up and run the Flask API project connected to MongoDB, for both Windows and macOS environments. 
+
+## Installation
+
+Before you start, ensure you have Python and pip installed on your system. This project requires Python 3.x.
+
+### Windows
+
+1. **Install Flask**:
+   ```bash
+   pip install Flask
+   ```
+
+2. **Install Flask-PyMongo**:
+   ```bash
+   pip install Flask-PyMongo
+   ```
+
+### macOS
+
+1. **Install Flask**:
+   ```bash
+   pip3 install Flask
+   ```
+
+2. **Install Flask-PyMongo**:
+   ```bash
+   pip3 install Flask-PyMongo
+   ```
+
+## Running the Project
+
+- Navigate to the project directory and run:
+  - Windows: `python run.py`
+  - macOS: `python3 run.py`
+
+## MongoDB Atlas IP Whitelisting
+
+***To ensure your application can connect to your MongoDB Atlas database, your IP address must be whitelisted in the Atlas dashboard.
+
+**After you add your account as a user to the datebase:
+
+1. Log in to [MongoDB Atlas](https://cloud.mongodb.com/).
+2. Navigate to **Network Access** under the **Security** section.
+3. Click on **Add IP Address** to add your current IP or **ALLOW ACCESS FROM ANYWHERE** (less secure).
+4. Follow the prompts to complete the process.
+
+**Or ask the owner to whitelsit your IP address (easier)
+---
