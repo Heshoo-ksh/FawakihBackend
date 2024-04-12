@@ -30,6 +30,10 @@ Before you start, ensure you have Python and pip installed on your system. This 
    ```bash
    pip3 install Flask-PyMongo
    ```
+3 Insatall CORS to enable API calls from another application
+   ```bash
+   pip install -U flask-cors
+   ```
 
 ## Running the Project
 
