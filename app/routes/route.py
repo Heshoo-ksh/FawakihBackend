@@ -15,7 +15,8 @@ def get_document(id):
         return jsonify({"error": "Document not found"}), 404
     
 # Create (POST)
-@app.route('/test', methods=['POST'])
+# This endpoint should be used to create an instance of the user when appropriate
+@app.route('/create', methods=['POST'])
 def create_document():
     data = request.json
     try:
@@ -25,8 +26,18 @@ def create_document():
         return jsonify({"error": "A document with the same username already exists."}), 409
 
 # Update (PUT)
-@app.route('/test/<id>', methods=['PUT'])
+# This Endpoint should be used for the functionalitiy to update the username in the setting page
+# This enmdpoint can be used to update the score apon new score record
+# How will this be used for both updating the score and username???? 
+# Answer: You will need to pass a body param as a json object, when updating the score or username, 
+# you can provide a json object with only the param you want ot update, that wiolll look like this: 
+#{
+#    "score": 67
+#}
+
+@app.route('/update/<id>', methods=['PUT'])
 def update_document(id):
+    print(f"Received update for ID: {id}, Data: {request.json}")  # Debug output
     data = request.json
     try:
         result = mongo.db.test.update_one({"_id": ObjectId(id)}, {"$set": data})
@@ -36,6 +47,7 @@ def update_document(id):
             return jsonify({"error": "Document not found or no update was necessary"}), 404
     except DuplicateKeyError:
         return jsonify({"error":"Update failed due to a duplicate username."}), 409
+
 
 # Delete (DELETE)
 @app.route('/test/<id>', methods=['DELETE'])
