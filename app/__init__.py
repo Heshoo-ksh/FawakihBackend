@@ -1,9 +1,10 @@
 from flask import Flask
+from flask_cors import CORS
 from flask_pymongo import PyMongo
 import pymongo
 
 app = Flask(__name__, instance_relative_config=True)
-
+CORS(app)
 # This code does not work, it grabs the string proeply but fials to connect as excpected
 #print(app.config.get('MONGO_URI'))  # Should be None or the default value
 #app.config.from_pyfile('config.py', silent=True)  
