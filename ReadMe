@@ -37,6 +37,7 @@ Before you start, ensure you have Python and pip installed on your system. This 
 4 Install test packages
    ```bash
 pip install pytest Flask-Testing pytest-cov
+pip install pytest flask-testing mongomock pytest-cov
 
 ## Running the Project
 
