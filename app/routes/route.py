@@ -40,11 +40,16 @@ def update_document(id):
     print(f"Received update for ID: {id}, Data: {request.json}")  # Debug output
     data = request.json
     try:
-        result = mongo.db.test.update_one({"_id": ObjectId(id)}, {"$set": data})
+        result = mongo.db.test.update_one(
+            # id will not need to be wrapped in ObjectID constructer since its already in hex
+            {"_id": id}, 
+            {"$set": data}
+        )
+
         if result.modified_count:
-            return jsonify({"success": True, "updated": id})
+            return jsonify({"success": True, "updated": id}), 201
         else:
-            return jsonify({"error": "Document not found or no update was necessary"}), 404
+            return jsonify({"error": "Document not found or no update was necessary"}), 200
     except DuplicateKeyError:
         return jsonify({"error":"Update failed due to a duplicate username."}), 409
 
