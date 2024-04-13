@@ -33,13 +33,22 @@ Before you start, ensure you have Python and pip installed on your system. This 
 3 Insatall CORS to enable API calls from another application
    ```bash
    pip install -U flask-cors
-   ```
+   ``
+4 Install test packages
+   ```bash
+pip install pytest Flask-Testing pytest-cov
 
 ## Running the Project
 
 - Navigate to the project directory and run:
   - Windows: `python run.py`
   - macOS: `python3 run.py`
+##To run your tests with pytest and measure the coverage, use the following command:
+pytest --cov=myapp unitTests.py
+
+##Checking Coverage
+The output from pytest will include a coverage report. If you want a more detailed HTML report, you can generate one with:
+pytest --cov=myapp --cov-report html unitTests.py
 
 ## MongoDB Atlas IP Whitelisting
 
