@@ -40,9 +40,8 @@ def update_document(id):
     print(f"Received update for ID: {id}, Data: {request.json}")  # Debug output
     data = request.json
     try:
-        result = mongo.db.test.update_one(
-            # id will not need to be wrapped in ObjectID constructer since its already in hex
-            {"_id": id}, 
+        result = mongo.db.test.update_one(        
+            {"_id": ObjectId(id)}, 
             {"$set": data}
         )
 
@@ -53,12 +52,8 @@ def update_document(id):
     except DuplicateKeyError:
         return jsonify({"error":"Update failed due to a duplicate username."}), 409
 
-
-# Delete (DELETE)
-@app.route('/test/<id>', methods=['DELETE'])
-def delete_document(id):
-    result = mongo.db.test.delete_one({"_id": ObjectId(id)})
-    if result.deleted_count:
-        return jsonify({"success": True, "deleted": id})
-    else:
-        return jsonify({"error": "Document not found"}), 404
+#def test_create_document(client: FlaskClient):
+    # Make sure each test uses unique data or reset the mock database
+ #   unique_user = {"username": "uniqueuser123", "score": 100}
+ #   response = client.post('/create', json=unique_user)
+ #   assert response.status_code == 201, "Expected document to be created successfully"
