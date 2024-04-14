@@ -1,13 +1,13 @@
 
-# Flask and MongoDB API Project Setup
+#  Flask and MongoDB API Project Setup
 
 This README outlines the steps necessary to set up and run the Flask API project connected to MongoDB, for both Windows and macOS environments. 
 
-## Installation
+##  Installation
 
 Before you start, ensure you have Python and pip installed on your system. This project requires Python 3.x.
 
-### Windows
+###  Windows
 
 1. **Install Flask**:
    ```bash
@@ -30,6 +30,8 @@ Before you start, ensure you have Python and pip installed on your system. This 
    ```bash
    pip3 install Flask-PyMongo
    ```
+For both windows and mac:
+
 3 Insatall CORS to enable API calls from another application
    ```bash
    pip install -U flask-cors
@@ -53,17 +55,20 @@ pytest
 The output from pytest will include a coverage report. If you want a more detailed HTML report, you can generate one with:
 pytest --cov=myapp --cov-report html unitTests.py (make sure your in the app folder)
 
-
 ## MongoDB Atlas IP Whitelisting
-**To ensure your application can connect to your MongoDB Atlas database, your IP address must be whitelisted in the Atlas dashboard.**
+Note: ALL IP's are whitelisted!!!!
 
-**After you add your account as a user to the database:**
+Then set up the frontend repo:
+Link: https://github.com/malabudi/Fawakeh
 
-1. Log in to [MongoDB Atlas](https://cloud.mongodb.com/).
-2. Navigate to **Network Access** under the **Security** section.
-3. Click on **Add IP Address** to add your current IP or **ALLOW ACCESS FROM ANYWHERE** (less secure).
-4. Follow the prompts to complete the process.
-
-**Or ask the owner to whitelist your IP address (easier)**
-
+# Deployment Doc
+## Be sure the API and Database is running first
+## Install the Latest Version of Unity
+## Install Visual Studio
+## Clone the github repo
+## Open the folder through unity hub
+## The game will be loaded once opened through unity hub
+## Open the scenes folder under project
+## double click the menu scene
+## press play on the top center
 ---
