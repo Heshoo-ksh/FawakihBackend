@@ -25,7 +25,7 @@ def create_document():
         result = mongo.db.test.insert_one(data)
         return jsonify({"success": True, "id": str(result.inserted_id)}), 201
     except DuplicateKeyError:
-        return jsonify({"error": "A document with the same username already exists."}), 409
+        return jsonify({"error": "A document with the same username already exists."}), 403
 
 # Update (PUT)
 '''''
