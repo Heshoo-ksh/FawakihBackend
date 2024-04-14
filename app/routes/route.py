@@ -41,16 +41,32 @@ def create_document():
 @app.route('/update/<id>', methods=['PUT'])
 def update_document(id):
     print(f"Received update for ID: {id}, Data: {request.json}")  # Debug output
-    data = request.json
-    try:
-        result = mongo.db.test.update_one(        
-            {"_id": id}, 
-            {"$set": data}
-        )
+    new_data = request.json
 
-        if result.modified_count:
-            return jsonify({"success": True, "updated": id}), 201
+    if 'score' not in new_data:
+        return jsonify({"error": "No score provided in request"}), 400
+
+    new_score = new_data['score']
+    try:
+        # Fetch the current document to compare scores
+        current_document = mongo.db.test.find_one({"_id": id})
+        if not current_document:
+            return jsonify({"error": "Document not found"}), 404
+
+        current_score = current_document.get('score', 0)  # Default to 0 if no score was set
+
+        if new_score > current_score:
+            # Only update if the new score is greater than the current score
+            result = mongo.db.test.update_one(
+                {"_id": id}, 
+                {"$set": {"score": new_score}}
+            )
+            if result.modified_count:
+                return jsonify({"success": True, "updated": id}), 201
+            else:
+                return jsonify({"error": "Update not necessary"}), 200
         else:
-            return jsonify({"error": "Document not found or no update was necessary"}), 200
+            return jsonify({"error": "New score is not greater than the current score"}), 200
+
     except DuplicateKeyError:
-        return jsonify({"error":"Update failed due to a duplicate username."}), 409
+        return jsonify({"error": "Update failed due to a duplicate username."}), 409
