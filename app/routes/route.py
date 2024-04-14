@@ -68,7 +68,7 @@ def update_document(id):
             return jsonify({"error": "New score is not greater than the current score"}), 200
 
     except DuplicateKeyError:
-        return jsonify({"error": "Update failed due to a duplicate username."}), 409
+        return jsonify({"error": "Update failed due to a duplicate username."}), 403
     
     
 '''
