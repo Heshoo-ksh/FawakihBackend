@@ -21,10 +21,6 @@ def get_document(id):
 def create_document():
     data = request.json
 
-     # Ensure there is an _id field in the data, or generate one if necessary
-    if '_id' not in data or not data['_id']:
-        data['_id'] = str()
-
     try:
         result = mongo.db.test.insert_one(data)
         return jsonify({"success": True, "id": str(result.inserted_id)}), 201
