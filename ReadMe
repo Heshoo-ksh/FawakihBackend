@@ -45,15 +45,16 @@ pip install --upgrade setuptools
 - Navigate to the project directory and run:
   - Windows: `python run.py`
   - macOS: `python3 run.py`
-##To run your tests with pytest and measure the coverage, use the following command:
-pytest --cov=myapp unitTests.py
+##To run your tests with pytest and measure the coverage, use the following command after you navigate to the app folder:
+
+pytest 
 
 ##Checking Coverage
 The output from pytest will include a coverage report. If you want a more detailed HTML report, you can generate one with:
-pytest --cov=myapp --cov-report html unitTests.py
+pytest --cov=myapp --cov-report html unitTests.py (make sure your in the app folder)
+
 
 ## MongoDB Atlas IP Whitelisting
-
 **To ensure your application can connect to your MongoDB Atlas database, your IP address must be whitelisted in the Atlas dashboard.**
 
 **After you add your account as a user to the database:**
