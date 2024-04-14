@@ -20,7 +20,6 @@ def get_document(id):
 @app.route('/create', methods=['POST'])
 def create_document():
     data = request.json
-
     try:
         result = mongo.db.test.insert_one(data)
         return jsonify({"success": True, "id": str(result.inserted_id)}), 201
@@ -55,7 +54,7 @@ def update_document(id):
 
         current_score = current_document.get('score', 0)  # Default to 0 if no score was set
 
-        if new_score > current_score:
+        if new_score >= current_score:
             # Only update if the new score is greater than the current score
             result = mongo.db.test.update_one(
                 {"_id": id}, 
@@ -70,3 +69,15 @@ def update_document(id):
 
     except DuplicateKeyError:
         return jsonify({"error": "Update failed due to a duplicate username."}), 409
+    
+    
+'''
+# Delete (DELETE)
+# This si commented out because it is not used in the application, will keep if for testing reasons
+@app.route('/test/<id>', methods=['DELETE'])
+def delete_document(id):
+    result = mongo.db.test.delete_one({"_id": ObjectId(id)})
+    if result.deleted_count:
+        return jsonify({"success": True, "deleted": id})
+    else:
+        return jsonify({"error": "Document not found"}), 404 '''
