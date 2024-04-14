@@ -1,13 +1,12 @@
-
-#  Flask and MongoDB API Project Setup
+# Flask and MongoDB API Project Setup
 
 This README outlines the steps necessary to set up and run the Flask API project connected to MongoDB, for both Windows and macOS environments. 
 
-##  Installation
+## Installation
 
 Before you start, ensure you have Python and pip installed on your system. This project requires Python 3.x.
 
-###  Windows
+### Windows
 
 1. **Install Flask**:
    ```bash
@@ -35,25 +34,25 @@ For both windows and mac:
 3 Insatall CORS to enable API calls from another application
    ```bash
    pip install -U flask-cors
-   ``
+   ```
 4 Install test packages
    ```bash
 pip install pytest Flask-Testing pytest-cov
 pip install pytest flask-testing mongomock pytest-cov
 pip install --upgrade setuptools
-
+```
 ## Running the Project
 
 - Navigate to the project directory and run:
   - Windows: `python run.py`
   - macOS: `python3 run.py`
-##To run your tests with pytest and measure the coverage, use the following command after you navigate to the app folder:
+## To run your tests with pytest and measure the coverage, use the following command after you navigate to the app folder:
 
 pytest 
 
-##Checking Coverage
+## Checking Coverage
 The output from pytest will include a coverage report. If you want a more detailed HTML report, you can generate one with:
-pytest --cov=myapp --cov-report html unitTests.py (make sure your in the app folder)
+`pytest --cov=myapp --cov-report html unitTests.py` (make sure your in the app folder)
 
 ## MongoDB Atlas IP Whitelisting
 Note: ALL IP's are whitelisted!!!!
